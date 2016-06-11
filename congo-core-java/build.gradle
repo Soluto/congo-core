@@ -1,0 +1,49 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+    }
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'soluto'
+            artifactId 'congo-core-java'
+            version '0.0.1'
+        }
+    }
+}
+
+bintray {
+    user = 'soluto'
+    key = 'fc108a95c482db7b1bacd1d5a603be9c37779463'
+    publications = ['MyPublication']
+    configurations = ['archives']
+    pkg {
+        version {
+            name = '0.0.1'
+        }
+        repo = 'soluto-jars'
+        name = 'congo-core-java'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Soluto/congo-core.git'
+
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'com.google.code.gson:gson:2.3.1'
+}
