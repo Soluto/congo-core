@@ -3,3 +3,4 @@ gradle
 congo-core-java/gradlew
 congo-core-java/gradlew.bat
 congo-core-java/.idea
+.gradle
