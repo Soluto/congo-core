@@ -2,8 +2,6 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
-version '0.0.3'
-
 buildscript {
     repositories {
         jcenter()
@@ -17,26 +15,24 @@ publishing {
     publications {
         MyPublication(MavenPublication) {
             from components.java
-            groupId 'soluto'
-            artifactId 'congo-core-java'
-            version '0.0.3'
+            groupId PACKAGE_GROUP
+            artifactId PACKAGE_NAME
+            version PACKAGE_VERSION
         }
     }
 }
 
 bintray {
-    user = 'soluto'
-    key = ''
+    user = BINTRAY_USER
+    key = BINTRAY_KEY
     publications = ['MyPublication']
     pkg {
         version {
-            name = '0.0.3'
+            name = PACKAGE_VERSION
         }
         repo = 'soluto-jars'
         name = 'congo-core-java'
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/Soluto/congo-core.git'
-
     }
 }
 
