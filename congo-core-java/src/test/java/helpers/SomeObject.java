@@ -4,7 +4,8 @@ public class SomeObject {
     public int someInt;
     public boolean someBool;
 
-    public SomeObject() {  }
+    public SomeObject() {
+    }
 
     public SomeObject(int someInt, boolean someBool) {
 

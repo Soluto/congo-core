@@ -1,7 +1,5 @@
 import rx.Completable;
-import rx.Subscription;
 import rx.functions.Action0;
-import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 import soluto.congo.core.RemoteCallResponder;
 import soluto.congo.core.RemoteCallResult;

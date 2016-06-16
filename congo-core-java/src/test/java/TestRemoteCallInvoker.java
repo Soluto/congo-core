@@ -2,8 +2,6 @@ import rx.Notification;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
-import rx.functions.Action0;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.subjects.PublishSubject;
 import soluto.congo.core.RemoteCall;

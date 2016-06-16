@@ -41,7 +41,7 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodThatReturnsComplexResult");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodThatReturnsComplexResult");
 
         SomeObject someResult = remoteCallInvoker.invoke(remoteCall).cast(SomeObject.class).toBlocking().first();
         assertEquals(someResult.someBool, true);
@@ -60,7 +60,7 @@ public class CongoCoreTests {
         }));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "someMethod");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "someMethod");
 
         SomeObject someResult = remoteCallInvoker.invoke(remoteCall).cast(SomeObject.class).toBlocking().first();
         assertEquals(someResult.someBool, true);
@@ -72,7 +72,7 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodThatReturnsObservableWithComplextResult");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodThatReturnsObservableWithComplextResult");
 
         SomeObject someResult = remoteCallInvoker.invoke(remoteCall).cast(SomeObject.class).toBlocking().first();
         assertEquals(someResult.someBool, true);
@@ -84,13 +84,12 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodThatThrowsException");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodThatThrowsException");
 
         try {
             remoteCallInvoker.invoke(remoteCall).cast(SomeObject.class).toBlocking().first();
             fail();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -100,13 +99,12 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodThatReturnsObservableError");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodThatReturnsObservableError");
 
         try {
             remoteCallInvoker.invoke(remoteCall).cast(SomeObject.class).toBlocking().first();
             fail();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -116,13 +114,12 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodThatReturnsObservableError");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodThatReturnsObservableError");
 
         try {
             remoteCallInvoker.invoke(remoteCall).cast(SomeObject.class).toBlocking().first();
             fail();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assertTrue(true);
         }
     }
@@ -132,12 +129,11 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodThatDoesNotExist");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodThatDoesNotExist");
 
         try {
             remoteCallInvoker.invoke(remoteCall).cast(SomeObject.class).toBlocking().first();
-        }
-        catch (MethodNotExists e) {
+        } catch (MethodNotExists e) {
             assertTrue(true);
         }
     }
@@ -150,8 +146,7 @@ public class CongoCoreTests {
         RemoteCall remoteCall1 = createCall(UUID.randomUUID(), "someService", "methodThatThrowsException");
         try {
             remoteCallInvoker.invoke(remoteCall1).cast(SomeObject.class).toBlocking().first();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
         }
 
@@ -167,8 +162,7 @@ public class CongoCoreTests {
         RemoteCall remoteCall1 = createCall(UUID.randomUUID(), "someService", "methodThatReturnsObservableError");
         try {
             remoteCallInvoker.invoke(remoteCall1).cast(SomeObject.class).toBlocking().first();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
         }
 
@@ -184,8 +178,7 @@ public class CongoCoreTests {
         RemoteCall remoteCall1 = createCall(UUID.randomUUID(), "someService", "methodThatDoesNotExist");
         try {
             remoteCallInvoker.invoke(remoteCall1).cast(SomeObject.class).toBlocking().first();
-        }
-        catch (MethodNotExists e) {
+        } catch (MethodNotExists e) {
         }
 
         RemoteCall remoteCall2 = createCall(UUID.randomUUID(), "someService", "methodThatRunSuccessfully");
@@ -197,7 +190,7 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodWithArguments", "first", "second");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodWithArguments", "first", "second");
 
         String someResult = remoteCallInvoker.invoke(remoteCall).cast(String.class).toBlocking().first();
         assertEquals(someResult, "first_second");
@@ -208,7 +201,7 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodThatReturnsPrimitive", 5);
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodThatReturnsPrimitive", 5);
 
         int someResult = remoteCallInvoker.invoke(remoteCall).cast(Integer.class).toBlocking().first();
         assertEquals(someResult, 5);
@@ -219,7 +212,7 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodWithComplexArgument", new SomeObject(5, true));
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodWithComplexArgument", new SomeObject(5, true));
 
         remoteCallInvoker.invoke(remoteCall).cast(Void.class).toBlocking().first();
     }
@@ -229,12 +222,11 @@ public class CongoCoreTests {
         router.use(new ControllerHandler("someService", new ControllerForTests()));
         router.listen();
 
-        RemoteCall remoteCall = createCall(UUID.randomUUID(),"someService", "methodWithArguments");
+        RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "methodWithArguments");
 
         try {
             remoteCallInvoker.invoke(remoteCall).cast(Void.class).toBlocking().first();
-        }
-        catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             assertTrue(true);
         }
     }
@@ -265,8 +257,7 @@ public class CongoCoreTests {
 
         try {
             remoteCallInvoker.invoke(remoteCall2).timeout(100, TimeUnit.MILLISECONDS).toBlocking().first();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             if (e.getCause().getClass() == TimeoutException.class) {
                 assertTrue(true);
                 return;
@@ -398,7 +389,7 @@ public class CongoCoreTests {
 
     }
 
-    private RemoteCall createCall(UUID correlationId, String service, String method, Object ...args){
+    private RemoteCall createCall(UUID correlationId, String service, String method, Object... args) {
         RemoteCall remoteCall = new RemoteCall();
         remoteCall.service = service;
         remoteCall.method = method;

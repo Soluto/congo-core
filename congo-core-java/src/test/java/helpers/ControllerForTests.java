@@ -4,13 +4,14 @@ import rx.Observable;
 
 public class ControllerForTests {
 
-    public void methodThatRunSuccessfully() { }
+    public void methodThatRunSuccessfully() {
+    }
 
     public SomeObject methodThatReturnsComplexResult() {
         SomeObject someResult = new SomeObject();
         someResult.someInt = 7;
         someResult.someBool = true;
-        return someResult ;
+        return someResult;
     }
 
     public String methodWithArguments(String param1, String param2) {
@@ -21,7 +22,8 @@ public class ControllerForTests {
         return expectedResult;
     }
 
-    public void methodWithComplexArgument(SomeObject someObject){  }
+    public void methodWithComplexArgument(SomeObject someObject) {
+    }
 
     public Observable<SomeObject> methodThatReturnsObservableWithComplextResult() {
         SomeObject someResult = new SomeObject();

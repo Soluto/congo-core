@@ -15,7 +15,7 @@ public class ControllerHandler implements Func1<RemoteCall, Observable<Object>> 
     private final Object controller;
     private List<Method> methods = new ArrayList<>();
 
-    public ControllerHandler(String serviceName, Object controller){
+    public ControllerHandler(String serviceName, Object controller) {
         this.serviceName = serviceName;
         this.controller = controller;
         methods = Arrays.asList(controller.getClass().getMethods());
@@ -27,7 +27,7 @@ public class ControllerHandler implements Func1<RemoteCall, Observable<Object>> 
         return handleRequest(remoteCall);
     }
 
-    public Observable<Object> handleRequest(RemoteCall remoteCall){
+    public Observable<Object> handleRequest(RemoteCall remoteCall) {
         try {
             Method method = getMethodByName(methods, remoteCall);
             Object[] args = getArgs(method.getParameterTypes(), remoteCall);
@@ -35,12 +35,10 @@ public class ControllerHandler implements Func1<RemoteCall, Observable<Object>> 
             Object methodResult = method.invoke(controller, args);
             if (!(methodResult instanceof Observable)) {
                 return Observable.just(methodResult);
+            } else {
+                return ((Observable<Object>) methodResult);
             }
-            else {
-                return ((Observable<Object>)methodResult);
-            }
-        }
-        catch (Throwable ex) {
+        } catch (Throwable ex) {
             return Observable.error(ex);
         }
     }
@@ -51,8 +49,7 @@ public class ControllerHandler implements Func1<RemoteCall, Observable<Object>> 
         }
         Object[] fixedArgs = new Object[argTypes.length];
         Gson gson = new Gson();
-        for (int i =0; i<argTypes.length;i++)
-        {
+        for (int i = 0; i < argTypes.length; i++) {
             Class argType = argTypes[i];
             fixedArgs[i] = gson.fromJson(gson.toJsonTree(remoteCall.args[i]), argType);
         }
@@ -60,7 +57,7 @@ public class ControllerHandler implements Func1<RemoteCall, Observable<Object>> 
     }
 
     private Method getMethodByName(List<Method> methods, RemoteCall remoteCall) {
-        for (Method method :methods) {
+        for (Method method : methods) {
             if (method.getName().equals(remoteCall.method))
                 return method;
         }
