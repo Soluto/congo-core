@@ -1,7 +1,7 @@
 package soluto.congo.core;
 
+import rx.Completable;
+
 public interface RemoteCallResponder {
-    void onNext(RemoteCall javaScriptCall, Object result);
-    void onCompleted(RemoteCall javaScriptCall);
-    void onError(RemoteCall javaScriptCall, Throwable throwable);
+    Completable respond(RemoteCallResult remoteCallResult);
 }
