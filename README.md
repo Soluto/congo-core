@@ -6,6 +6,9 @@ Congo is cross platform - currently implemened in javacript and Java, and is exp
 ### Examples
 Congo is easy to setup and use. The easiest way to understand it is by looking at the examples at https://github.com/Soluto/congo-examples
 
+## Usage
+Java - [congo-core-java](https://github.com/Soluto/congo-core/tree/master/congo-core-java)
+
 ### Pluggable Transportation Layer
 Communication is implemened as a plugin. You can transport messages with websocket, socket.io, TCP, pubnub etc. You can also use IPC by implementing proper trasport layer (such as intents in android)
 
