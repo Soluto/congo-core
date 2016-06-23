@@ -4,11 +4,14 @@ Java implementation of [Congo](https://github.com/Soluto/congo-core)
 ### Usage
 This is an example usage based on the library tests. For real app example see: https://github.com/Soluto/congo-examples
 
-Setup the listener and the responder:
+Setup the communication layer:
 ```java
 PublishSubject<RemoteCall> requestStream = PublishSubject.create();
 PublishSubject<RemoteCallResult> responseStream = PublishSubject.create();
+```
 
+Setup the listener and the responder:
+```java
 RemoteCallListener listener = new TestRemoteCallListener(requestStream);
 RemoteCallResponder responder = new TestRemoteCallResponder(responseStream);
 
