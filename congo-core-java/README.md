@@ -39,7 +39,7 @@ RemoteCallResponder responder = new TestRemoteCallResponder(responseStream);
 ```
 Creata a ```Router``` that maps incoming ```RemoteCall``` from the listener to the implementing service, and forwards the result as a ```RemoteCallResult``` to the responder:
 ```java
-router = new Router(listener, responder);
+Router router = new Router(listener, responder);
 
 router.use(new ControllerHandler("someService", new Object() {
    public Observable<String> someMethod(final String text) {
