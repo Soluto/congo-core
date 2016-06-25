@@ -22,3 +22,12 @@ For some plugins examples see:
 
 ### Experimental
 We are using an earlier version of Congo in production, and would be happy to get some feedback. The project is still experimental and we will put more effort into it in the near future.
+
+###  Contributing
+Thanks for thinking about contributing! We are looking for contributions of any sort and size - features, bug fixes, documentation or anything else that you think will make Congo better.
+
+Fork and clone locally
+Create a topic specific branch
+Add a cool feature or fix a bug
+Add tests
+Send a Pull Request
