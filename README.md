@@ -17,8 +17,6 @@ Communication is implemened as a plugin. You can transport messages in any commu
 For some plugins examples see:
  - https://github.com/Soluto/congo-pubnub
  - https://github.com/Soluto/congo-react-native
- - https://github.com/Soluto/congo-android-webview
- - https://github.com/Soluto/congo-android-intent
 
 ### Experimental
 We are using an earlier version of Congo in production, and would be happy to get some feedback. The project is still experimental and we will put more effort into it in the near future.
