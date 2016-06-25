@@ -33,9 +33,19 @@ Setup the listener and the responder:
 ```java
 RemoteCallListener listener = new TestRemoteCallListener(requestStream);
 RemoteCallResponder responder = new TestRemoteCallResponder(responseStream);
-
 router = new Router(listener, responder);
-router.use(new ControllerHandler("someService", new SomeService()));
+
+router.use(new ControllerHandler("someService", new Object() {
+   public Observable<String> someMethod(String text) {
+       return Observable.interval(1, TimeUnit.SECONDS).map(new Func1<Long, String>() {
+           @Override
+           public String call(Long aLong) {
+               return text;
+           }
+       });
+   }
+}));
+
 router.listen();
 ```
 
@@ -44,9 +54,9 @@ Invoke remote call with the invoker:
 RemoteCallInvoker invoker = new TestRemoteCallInvoker(requestStream, responseStream);
 
 RemoteCall remoteCall = new RemoteCall();
-remoteCall.service = "someService;
-remoteCall.method = someMethod;
-remoteCall.args = ["a", "b", "c"];
+remoteCall.service = "someService";
+remoteCall.method = "someMethod";
+remoteCall.args = ["Hello World!"];
 remoteCall.correlationId = UUID.randomUUID().toString();
 
 Observable<String> resultStream = remoteCallInvoker.invoke(remoteCall).cast(String.class)
