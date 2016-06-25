@@ -29,10 +29,16 @@ PublishSubject<RemoteCall> requestStream = PublishSubject.create();
 PublishSubject<RemoteCallResult> responseStream = PublishSubject.create();
 ```
 
-Setup the listener and the responder:
+Create a ```RemoteCallListener``` that will receive incoming ```RemoteCall` from the communication layer:
 ```java
 RemoteCallListener listener = new TestRemoteCallListener(requestStream);
+```
+Create a ```RemoteCallResponder``` that will send ```RemoteCallResult``` through the communication layer:
+```java
 RemoteCallResponder responder = new TestRemoteCallResponder(responseStream);
+```
+Creata a ```Router``` that maps incoming ```RemoteCall``` from the listener to the imlementing service, and forward the result as a ```RemoteCallResult``` to the responder:
+```java
 router = new Router(listener, responder);
 
 router.use(new ControllerHandler("someService", new Object() {
@@ -48,8 +54,7 @@ router.use(new ControllerHandler("someService", new Object() {
 
 router.listen();
 ```
-
-Invoke remote call with the invoker:
+Send ```RemoteCall``` using the  ```RemoteCallInvoker```:
 ```java
 RemoteCallInvoker invoker = new TestRemoteCallInvoker(requestStream, responseStream);
 
