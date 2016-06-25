@@ -1,6 +1,6 @@
 # Congo
 
-Congo is an RPC/IPC library that is build on top of [Reactive Extensions](http://reactivex.io/) 
+Congo is a RPC/IPC library that is build on top of [Reactive Extensions](http://reactivex.io/) 
 
 It enables two parties to transport a stream of messages over various communication layers.
 
