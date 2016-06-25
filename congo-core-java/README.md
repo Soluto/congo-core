@@ -54,7 +54,7 @@ router.use(new ControllerHandler("someService", new Object() {
 
 router.listen();
 ```
-Send ```RemoteCall``` using the  ```RemoteCallInvoker```:
+In order to execute remote call, the client need to invoke a ```RemoteCall``` using the  ```RemoteCallInvoker```:
 ```java
 RemoteCallInvoker invoker = new TestRemoteCallInvoker(requestStream, responseStream);
 
