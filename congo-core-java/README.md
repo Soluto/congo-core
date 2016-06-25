@@ -37,7 +37,7 @@ Create a ```RemoteCallResponder``` that will send ```RemoteCallResult``` through
 ```java
 RemoteCallResponder responder = new TestRemoteCallResponder(responseStream);
 ```
-Creata a ```Router``` that maps incoming ```RemoteCall``` from the listener to the imlementing service, and forward the result as a ```RemoteCallResult``` to the responder:
+Creata a ```Router``` that maps incoming ```RemoteCall``` from the listener to the implementing service, and forwards the result as a ```RemoteCallResult``` to the responder:
 ```java
 router = new Router(listener, responder);
 
