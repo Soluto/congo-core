@@ -1,8 +1,27 @@
 # Congo Core - Java
 Java implementation of [Congo](https://github.com/Soluto/congo-core)
 
+## Installation
+In your ```build.gradle``` file add:
+```
+repositories {
+   ...
+    maven {
+        url "https://dl.bintray.com/soluto/soluto-jars"
+    }
+    ...
+   
+}
+...
+dependencies {
+    ...
+    compile 'soluto:congo-core-java:0.0.4'
+    ...
+}
+```
+
 ### Usage
-This is an example usage based on the library tests. For real app example see: https://github.com/Soluto/congo-examples
+This example usage is based on the library tests. For real app example see: [Congo Examples](https://github.com/Soluto/congo-examples)
 
 Setup the communication layer:
 ```java
