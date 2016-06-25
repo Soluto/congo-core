@@ -29,7 +29,7 @@ PublishSubject<RemoteCall> requestStream = PublishSubject.create();
 PublishSubject<RemoteCallResult> responseStream = PublishSubject.create();
 ```
 
-Create a ```RemoteCallListener``` that will receive incoming ```RemoteCall` from the communication layer:
+Create a ```RemoteCallListener``` that will receive incoming ```RemoteCall``` from the communication layer:
 ```java
 RemoteCallListener listener = new TestRemoteCallListener(requestStream);
 ```
