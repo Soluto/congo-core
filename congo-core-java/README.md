@@ -36,7 +36,7 @@ RemoteCallResponder responder = new TestRemoteCallResponder(responseStream);
 router = new Router(listener, responder);
 
 router.use(new ControllerHandler("someService", new Object() {
-   public Observable<String> someMethod(String text) {
+   public Observable<String> someMethod(final String text) {
        return Observable.interval(1, TimeUnit.SECONDS).map(new Func1<Long, String>() {
            @Override
            public String call(Long aLong) {
