@@ -42,7 +42,12 @@ router.listen();
 Invoke remote call with the invoker:
 ```java
 RemoteCallInvoker invoker = new TestRemoteCallInvoker(requestStream, responseStream);
-RemoteCall remoteCall = createCall(UUID.randomUUID(), "someService", "someMethod");
+
+RemoteCall remoteCall = new RemoteCall();
+remoteCall.service = "someService;
+remoteCall.method = someMethod;
+remoteCall.args = ["a", "b", "c"];
+remoteCall.correlationId = UUID.randomUUID().toString();
 
 Observable<String> resultStream = remoteCallInvoker.invoke(remoteCall).cast(String.class)
 ```
