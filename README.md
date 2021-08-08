@@ -1,3 +1,8 @@
+![No Maintenance Intended](http://unmaintained.tech/badge.svg)
+
+# Deprecation
+This repository is deprecated and no longer supported.
+
 # Congo
 
 Congo is a RPC/IPC library that is build on top of [Reactive Extensions](http://reactivex.io/) 
